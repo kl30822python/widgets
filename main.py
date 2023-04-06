@@ -8,7 +8,12 @@ class Window(tk.Tk):
         topFrame.pack()
         mediumFrame = MediumFrame(self,borderwidth=0)
         mediumFrame.pack(fill=tk.X)
+
+    def radioButtonEventOfMediumFrame(self,radioButtonValue):
+        print(radioButtonValue)
         
+
+
 
 def main():
     window = Window()
