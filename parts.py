@@ -38,6 +38,7 @@ class MediumFrame(ttk.LabelFrame):
         super().__init__(master, **kwargs)
         #create ttk.radiobuttons in self
         # ttk.Style change ttk.Radiobutton shape
+        self.w = master
         ttkStyle = ttk.Style()
         ttkStyle.theme_use('clam')          
         radioFrame = ttk.LabelFrame(self, text='Radio Buttons')
@@ -51,13 +52,36 @@ class MediumFrame(ttk.LabelFrame):
         self.radiobutton3.pack()         
         self.radiobutton4 = ttk.Radiobutton(radioFrame, text='Option 4',variable=self.radioStringVar, value='brown',command=self.radioEvent)
         self.radiobutton4.pack()
-        #self.radiobutton5 = ttk.Radiobutton(radioFrame, text='Option 5',#variable=self.radioStringVar, value='navy')
-        #self.radiobutton5.pack()
         self.radioStringVar.set('red')
+
+        # create ttk.checkbuttons in self
+        checkFrames = ttk.LabelFrame(self, text='Check Buttons')
+        checkFrames.pack(side=tk.RIGHT, padx=10, pady=10)
+
+        self.checkStringVar1 = tk.StringVar()
+        self.checkStringVar2 = tk.StringVar()
+        self.checkStringVar3 = tk.StringVar()
+        self.checkStringVar4 = tk.StringVar()
+
+        self.checkStringVar = tk.StringVar()
+        self.checkbutton1 = ttk.Checkbutton(checkFrames, text='Option 1',variable=self.checkStringVar1, command=self.checkEvent,onvalue='op1check')
+        self.checkbutton1.pack()
+        self.checkbutton2 = ttk.Checkbutton(checkFrames, text='Option 2',variable=self.checkStringVar2, command=self.checkEvent,onvalue='op2check')
+        self.checkbutton2.pack()
+        self.checkbutton3 = ttk.Checkbutton(checkFrames, text='Option 3',variable=self.checkStringVar3, command=self.checkEvent,onvalue='op3check')
+        self.checkbutton3.pack()
+        self.checkbutton4 = ttk.Checkbutton(checkFrames, text='Option 4',variable=self.checkStringVar4, command=self.checkEvent,onvalue='op4check')
+        self.checkbutton4.pack()
 
 
     def radioEvent(self): #
         #print(self.radioStringVar.get())
-        self.w.radioButtonEventOfMedianFrame(self.radioStringVar.get())
+        self.w.radioButtonEventOfMediumFrame(self.radioStringVar.get())
 
+    def checkEvent(self):
+        print(self.checkStringVar1.get())
+        print(self.checkStringVar2.get())
+        print(self.checkStringVar3.get())
+        print(self.checkStringVar4.get())
+        #self.w.radioButtonEventOfMediumFrame(self.checkStringVar.get())
 
