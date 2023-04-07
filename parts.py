@@ -89,13 +89,28 @@ class MediumFrame(ttk.LabelFrame):
 class BottomFrame(ttk.LabelFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
+        self.w = master #self.w = self.window
         listFrame = ttk.LabelFrame(self)
         listFrame.pack(side=tk.LEFT,padx=10,pady=10)
         list = tk.Listbox(listFrame, height=6, width=10)
         list.pack(side=tk.LEFT)
+        self.data = []
         for month in range(1,13): #由一月起十二月結束 (13-1=12)
-            list.insert(tk.END,f"{month}月")
+            #list.insert(tk.END,f"{month}月")
+            self.data.append(f"{month}月")
+
+        for item in self.data:
+            list.insert(tk.END, item)
 
         scrollBar = ttk.Scrollbar(listFrame, command=list.yview)
         scrollBar.pack(side=tk.RIGHT, fill=tk.Y)
         list.configure(yscrollcommand=scrollBar.set)
+        list.bind('<<ListboxSelect>>', self.items_selected)
+
+    def items_selected(self, event):
+        listbox = event.widget
+        #selectedIndex -> tuple
+        (selectedIndex,) = listbox.curselection()
+        selectedValue = self.data[selectedIndex]
+        self.w.listBoxEventOfBottomFrame(selectedValue)
+
