@@ -1,7 +1,9 @@
 import tkinter as tk
 from parts import TopFrame, MediumFrame, BottomFrame
 
+
 class Window(tk.Tk):
+    
     def __init__(self):
         super().__init__()
         topFrame = TopFrame(self, borderwidth=0)        
@@ -13,6 +15,10 @@ class Window(tk.Tk):
 
     def radioButtonEventOfMediumFrame(self,radioButtonValue):
         print(radioButtonValue)
+
+    def listBoxEventOfBottomFrame(self, listBoxValue):
+        print(listBoxValue)
+
         
 
 
