@@ -85,3 +85,7 @@ class MediumFrame(ttk.LabelFrame):
         print(self.checkStringVar4.get())
         #self.w.radioButtonEventOfMediumFrame(self.checkStringVar.get())
 
+
+class BottomFrame(ttk.LabelFrame):
+    def __init__(self, master, **kwargs):
+        super().__init__(master, **kwargs)
